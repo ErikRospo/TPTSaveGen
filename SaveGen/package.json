@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/ErikRospo/TPTSaveGen/issues"
   },
-  "homepage": "https://github.com/ErikRospo/TPTSaveGen#readme"
+  "homepage": "https://github.com/ErikRospo/TPTSaveGen#readme",
+  "dependencies": {
+    "arcsecond": "^4.1.0",
+    "arcsecond-binary": "^1.2.0",
+    "construct-js": "^1.0.1"
+  }
 }
