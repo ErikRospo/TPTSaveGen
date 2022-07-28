@@ -1,0 +1,19 @@
+{
+  "name": "tptsavegen",
+  "version": "1.0.0",
+  "description": "Generate TPT saves and stamps",
+  "main": "parser.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErikRospo/TPTSaveGen.git"
+  },
+  "author": "Erik Rospo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ErikRospo/TPTSaveGen/issues"
+  },
+  "homepage": "https://github.com/ErikRospo/TPTSaveGen#readme"
+}
