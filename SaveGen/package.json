@@ -19,6 +19,9 @@
   "dependencies": {
     "arcsecond": "^4.1.0",
     "arcsecond-binary": "^1.2.0",
-    "construct-js": "^1.0.1"
+    "bson": "^4.6.5",
+    "bz2": "^1.0.1",
+    "construct-js": "^1.0.1",
+    "keybase-compressjs": "^1.0.1-c"
   }
 }

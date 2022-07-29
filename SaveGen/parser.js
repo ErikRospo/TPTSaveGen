@@ -1,0 +1,37 @@
+//@ts-check
+// const A = require("arcsecond");
+// const B = require("arcsecond-binary");
+// const C = require("construct-js");
+const fs = require("fs");
+const path = require("path");
+const compressjs = require("keybase-compressjs");
+// const zlib = require("zlib")
+const BSONlib = require("bson");
+const { log,assert } = require("console");
+const { join } = require("path");
+const bz2=compressjs.Bzip2;
+const stmFileName = "/62b669e900.stm";
+const FileContentsBuffer = fs.readFileSync(join(__dirname, stmFileName));
+const FileContents = FileContentsBuffer.valueOf();
+console.log(join(__dirname, stmFileName));
+const id=FileContents.slice(0,4).toString();
+// console.log(id);
+const version=FileContents[4];
+// console.log(version);
+const cellSize=FileContents[5];
+// console.log(cellSize);
+const width=FileContents[6];
+// console.log(width);
+const height=FileContents[7];
+// console.log(height);
+const bz2length=FileContents.slice(8,12).reduce((a,b)=>a+b);
+// console.log(bz2length);
+const bz2data=FileContents.slice(12);
+// console.log(bz2data);
+fs.writeFileSync(join(__dirname, "./bz2data.bin"),bz2data);
+const bz2raw=bz2.decompressFile(bz2data);
+const bsondata=BSONlib.deserialize(bz2raw);
+console.log(bsondata);
+const version_string=bsondata.origin.majorVersion+"."+bsondata.origin.minorVersion+"."+bsondata.origin.buildNum+"."+bsondata.origin.snapshotId;
+console.log(version_string);
+const bsondata_string=JSON.stringify(bsondata,null,2);
