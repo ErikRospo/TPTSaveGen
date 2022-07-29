@@ -1,11 +1,8 @@
 //@ts-check
 const A = require("arcsecond");
 const B = require("arcsecond-binary");
-const C = require("construct-js");
 const fs = require("fs");
-const path = require("path");
 const bz2 = require("bz2");
-const zlib = require("zlib");
 // const BSONlib = require("bson");
 const { log } = require("console");
 const { join } = require("path");
@@ -55,7 +52,6 @@ const headerSubChunk = A.coroutine(function* () {
    * @type {Array<number>}
    */
   const bz2array = [];
-
   for (let i = 0; i < FileContents.byteLength; i++) {
     const dv = yield B.u8;
     bz2array.push(Number(dv));
@@ -105,6 +101,7 @@ const headerSubChunk = A.coroutine(function* () {
   };
   return headerSubChunkData;
 });
+fs.writeFileSync(join(__dirname, `${stmFileName}.bufferjson`), FileContents);
 const output = headerSubChunk.run(FileContents);
 if (output.isError) {
   console.error(output.error);
